@@ -11,7 +11,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 
 @SpringBootApplication
-/* @MapperScan(value = {"com.example.practice.mapper"}) */
+//@MapperScan(value = {"com.example.practice.mapper"})
 public class MapperSessionFactory {
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource)throws Exception{
