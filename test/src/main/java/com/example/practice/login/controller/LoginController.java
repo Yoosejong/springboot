@@ -29,13 +29,17 @@ public class LoginController {
     	
     	Login user = loginService.loginCheck(login);
     	
-    	if(login.getUser_pwd() == user.getUser_pwd() || login.getUser_pwd().equals(user.getUser_pwd())) {
-    		model.addAttribute("userInfo", user);
-    		session.setAttribute("userInfo", user);
-    		System.out.println("user뜹니까?" + user);
+    	if(user != null) {
+    		if(login.getUser_pwd() == user.getUser_pwd() || login.getUser_pwd().equals(user.getUser_pwd())) {
+    			model.addAttribute("userInfo", user);
+    			session.setAttribute("userInfo", user);
+    		}else {
+    			throw new lwException("로그인 실패!");
+    		}
     	}else {
     		throw new lwException("로그인 실패!");
     	}
+    	
     	
     	return "redirect:/home";
     }

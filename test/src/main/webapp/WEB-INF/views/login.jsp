@@ -35,6 +35,7 @@ $(function() {
 				$("#user_pwd").focus();
 				return;
 			}
+			
 			// 폼 내부의 데이터를 전송할 주소
 			document.sendform.action = "/loginCheck"
 			document.sendform.submit();
@@ -77,16 +78,6 @@ $(function() {
                                         <button type="button" class="btn btn-primary btn-user btn-block" id="loginBtn">
                                             Login
                                         </button>
-                                        
-                                       <%--  <c:choose>
-											<c:when test="${userInfo.user_id eq null}">
-												<script> alert("등록되지 않은 사용자입니다.") </script>
-											</c:when>
-											
-											<c:when test="${msg == 'failure'}">
-												<script> alert("비밀번호가 일치하지 않습니다.") </script>
-											</c:when>
-										</c:choose> --%>
                                         
                                     </form>
                                     <hr>

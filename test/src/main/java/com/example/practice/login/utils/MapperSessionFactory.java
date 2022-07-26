@@ -10,16 +10,16 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 
-@SpringBootApplication
+//@SpringBootApplication
 //@MapperScan(value = {"com.example.practice.mapper"})
-public class MapperSessionFactory {
-    @Bean
-    public SqlSessionFactory sqlSessionFactory(DataSource dataSource)throws Exception{
-        SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource);
-        Resource[] res = new PathMatchingResourcePatternResolver()
-        		.getResources("classpath:mapper-xml/*Mapper.xml");
-        sessionFactory.setMapperLocations(res);
-        return sessionFactory.getObject();
-    }
-}
+//public class MapperSessionFactory {
+//    @Bean
+//    public SqlSessionFactory sqlSessionFactory(DataSource dataSource)throws Exception{ 
+//        SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
+//        sessionFactory.setDataSource(dataSource);
+//        Resource[] res = new PathMatchingResourcePatternResolver()
+//        		.getResources("classpath:mapper-xml/*Mapper.xml");
+//        sessionFactory.setMapperLocations(res);
+//        return sessionFactory.getObject();
+//    }
+//}
