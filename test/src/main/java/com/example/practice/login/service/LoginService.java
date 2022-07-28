@@ -17,4 +17,8 @@ public class LoginService {
 		return loginMapper.loginCheck(login);
 	}
 
+	public int signUpOk(Login login) {
+		return (Integer)loginMapper.signUpOk(login);
+	}
+
 }

@@ -88,7 +88,7 @@ public class Login {
 	public String getUse_yn() {
 		return use_yn;
 	}
-	public void setUse_yn(String use_yn) {
+	public void setUser_yn(String use_yn) {
 		this.use_yn = use_yn;
 	}
 

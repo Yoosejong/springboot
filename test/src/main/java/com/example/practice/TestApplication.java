@@ -13,9 +13,9 @@ public class TestApplication {
 		SpringApplication.run(TestApplication.class, args);
 	}
 	
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-      return builder.sources(TestApplication.class);
-	}
+//	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+//      return builder.sources(TestApplication.class);
+//	}
 	
 
 }

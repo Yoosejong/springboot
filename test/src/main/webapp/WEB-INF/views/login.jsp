@@ -85,7 +85,7 @@ $(function() {
                                         <a class="small" href="forgot-password.html">비밀번호 찾기</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">회원가입</a>
+                                        <a class="small" href="/signup">회원가입</a>
                                     </div>
                                 </div>
                             </div>

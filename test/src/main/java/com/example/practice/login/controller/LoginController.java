@@ -19,7 +19,7 @@ public class LoginController {
 	private LoginService loginService;
 	// 로그인 화면
     @RequestMapping("/login")
-	public String Login() throws Exception {
+	public String Login() {
 		return "login";
 	}
     

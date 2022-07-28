@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.practice.company.mapper.CompanyMapper">
+	<resultMap id="companyResultSet" type="com.example.practice.company.domain.Company">
+	  	<id property="cm_no" column="cm_no"/>
+	  	<result property="cm_content" column="cm_content"/>
+	  	<result property="cm_deadline" column="cm_deadline"/>
+	  	<result property="cm_job" column="cm_job"/>
+	  	<result property="cm_career" column="cm_career"/>
+	  	<result property="cm_careerType" column="cm_careerType"/>
+	  	<result property="cm_salary" column="cm_salary"/>
+	  	<result property="cm_skill" column="cm_skill"/>
+	  	<result property="cm_imageLink" column="cm_imageLink"/>
+  	</resultMap>
+  	
+  	<select id="selectCompanyList" resultMap="companyResultSet">
+  		SELECT  cm_no
+  				, cm_name
+  				, cm_content
+  				, cm_percent
+  				, cm_deadline
+  				, cm_job
+  				, cm_career
+  				, cm_careerType
+  				, cm_salary
+  				, cm_skill
+  				, cm_imageLink
+  		FROM	
+  			tb_company
+  	</select>
+  	
+  	
+</mapper>

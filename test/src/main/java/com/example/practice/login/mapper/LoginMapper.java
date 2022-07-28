@@ -11,5 +11,7 @@ public interface LoginMapper {
 
 	public Login loginCheck(Login login);
 
+	public int signUpOk(Login login);
+
 }
 
