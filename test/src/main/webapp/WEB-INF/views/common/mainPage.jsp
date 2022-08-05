@@ -22,51 +22,18 @@
 
 <style>
 .h-100 {
-    height: 250%!important;
+    height: 100%!important;
 }
 </style>
 <script>
-var test1 = "${cList}";
+
 $(document).ready(function(){
-	$("#test").on("click", function() {
+	$("#logOutBtn").on("click", function() {
 		location.href = "/login";
-		$.ajax({
-			url: '/logOut',
-			type: 'post',
-			dataType: 'json',
-			success: function(ajaxResult) {
-									
-			}
-		});
 	});
 	
-	/* $.each(test1, function (index, item) {
-	    // 두 번째 매개변수로는 콜백함수인데 콜백함수의 매개변수 중
-	    // 첫 번째 index는 배열의 인덱스 또는 객체의 키를 의미하고
-	    // 두 번째 매개 변수 item은 해당 인덱스나 키가 가진 값을 의미합니다.
-	
-
-
-	}) */
-	
-	/* $("#progressbar") */
-	/* $('#progressbar').attr('aria-valuenow', newprogress).css('width', newprogress+'%'); */
-	console.log("test1", test1);
 });
 
-
-/* function jsLogout() {
-		$.ajax({
-			url: '/logOut',
-			type: 'post',
-			dataType: 'json',
-			success: function(ajaxResult) {
-				console.log("ajaxResult", ajaxResult);
-					alert("로그아웃 되었습니다.");
-					window.location.href = "/login";
-			}
-		});
-} */
 
 </script>
 <body id="page-top">
@@ -77,11 +44,11 @@ $(document).ready(function(){
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">유엔아이컴퍼니<sup></sup></div>
             </a>
 
             <!-- Divider -->
@@ -89,9 +56,9 @@ $(document).ready(function(){
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/home">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>회사소개</span></a>
             </li>
 
             <!-- Divider -->
@@ -356,8 +323,7 @@ $(document).ready(function(){
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
@@ -396,7 +362,7 @@ $(document).ready(function(){
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <button type="button" class="dropdown-item" id="test" data-toggle="modal" data-target="#logoutModal">
+                                <button type="button" class="dropdown-item" id="logOutBtn" data-toggle="modal" data-target="#logoutModal">
                                     <c:choose>
                                     	<c:when test="${userInfo eq null }">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -421,8 +387,6 @@ $(document).ready(function(){
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">회사소개</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
                     <!-- Content Row -->
@@ -435,17 +399,26 @@ $(document).ready(function(){
 	                                    <div class="row no-gutters align-items-center">
 	                                        <div class="col mr-2">
 	                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">${item.cm_name}</div>
-	                                            <img alt="" src="${item.cm_imageLink}" style="width:100px"></img>
-	                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${item.cm_content }</div>
+	                                            <c:url var="companyDetail" value="/companyDetail">
+													<c:param name="cm_no" value="${item.cm_no}"/>
+													<c:param name="rv_no" value="${item.rv_no}"/>
+											  	</c:url>
+	                                            
+	                                            <a href="${companyDetail}">
+	                                            	<img alt="" src="${item.cm_imageLink}" style="width:100px; cursor: pointer;"></img>
+	                                            </a>
+	                                            
+	                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${item.cm_title }</div>
 	                                            <br/>
 	                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">만족도</div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${item.cm_percent } %</div>
                                                 </div>
+                                                
                                                 <%-- <div class="col">
                                                     <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" id="progressbar" role="progressbar" style="" aria-valuenow="" aria-valuemin="0" aria-valuemax="100">${item.cm_percent }</div>
+                                                        <div class="progress-bar bg-info" id="progressbar" role="progressbar" style="${item.cm_percent }" aria-valuenow="" aria-valuemin="0" aria-valuemax="100">${item.cm_percent }</div>
                                                     </div>
                                                 </div> --%>
                                             </div>
@@ -458,6 +431,7 @@ $(document).ready(function(){
 	                            </div>
 	                        </div>
                         </c:forEach>
+                       
                     </div>
 
 
@@ -488,8 +462,6 @@ $(document).ready(function(){
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-	
-	<button class="btn btn-primary" type="button" id="logOutBtn">Logout</button>
 	
     <!-- Logout Modal-->
     <!-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.practice.review.mapper.ReviewMapper">
+  	
+  	<!-- Review Table ResultMap-->
+  	<resultMap type="com.example.practice.review.domain.Review" id="reviewSetTest">
+  		<id property="rv_no" column="rv_no"/>
+  		<result property="rv_id" column="rv_id"/>
+  		<result property="rv_nickName" column="rv_nickName"/>
+  		<result property="rv_content" column="rv_content"/>
+  		<result property="rv_score" column="rv_score"/>
+  		<result property="rv_writeDate" column="rv_writeDate"/>
+  		<result property="rv_updateDate" column="rv_updateDate"/>
+  	</resultMap>
+  	
+  	<select id="selectReviewList" resultType="com.example.practice.review.domain.Review">
+  		  			  SELECT
+					    r.rv_no,
+					    r.rv_id,
+					    r.rv_content,
+					    r.RV_score,
+					    r.rv_id,
+					    r.rv_nickname
+					FROM
+					    tb_review r
+					LEFT JOIN
+					    tb_user u
+					ON
+					    r.rv_id = u.user_id
+					    LEFT JOIN
+					    tb_company c
+					ON	
+					    r.rv_no = c.cm_no
+						where c.cm_no = #{cm_no}
+						and r.rv_no = #{rv_no}
+  	</select>
+
+	<select id="selectOne" parameterType="_int" resultType="com.example.practice.review.domain.Review">
+		SELECT  tc.cm_no
+  				, tc.cm_name
+  				, tc.cm_title
+  				, tc.cm_content
+  				, tr.rv_content
+  				, tr.rv_score
+					,CASE WHEN tr.rv_score=1 THEN 1 END SCORE1
+					,CASE WHEN tr.rv_score=2 THEN 2 END SCORE2
+					,CASE WHEN tr.rv_score=3 THEN 3 END SCORE3
+					,CASE WHEN tr.rv_score=4 THEN 4 END SCORE4
+					,CASE WHEN tr.rv_score=5 THEN 5 END SCORE5
+  				, tr.rv_nickName
+  				, tr.rv_writeDate
+  				, tr.rv_updateDate
+  				, tc.cm_percent
+  				, tc.cm_deadline
+  				, tc.cm_job
+  				, tc.cm_career
+  				, tc.cm_careerType
+  				, tc.cm_salary
+  				, tc.cm_skill
+  				, tc.cm_imageLink
+				, tc.cm_detailLink
+  		FROM	
+  			tb_company tc, tb_review tr
+  				where tc.cm_no = tr.rv_no
+  				and tr.rv_no = #{tr.rv_no}
+	</select>
+</mapper>

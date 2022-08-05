@@ -38,18 +38,6 @@ public class SignUpController {
 			throw new lwException("회원 가입 실패!");
 		}
 		
-//		if(flag == 1) {
-//			model.addAttribute("flag", flag);
-//		}
-		
 	}
-	
-	// 아이디 중복체크
-//	@RequestMapping("/idChk")
-//	public String signUpIdChk(Login login, Model model) {
-//		
-//		Login idChk = loginService.selectIdChk(login);
-//		
-//		
-//	}
+
 }

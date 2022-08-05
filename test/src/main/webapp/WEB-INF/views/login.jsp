@@ -68,22 +68,11 @@ $(function() {
                                             <input type="password" class="form-control form-control-user" id="user_pwd" name="user_pwd" placeholder="비밀번호를 입력해주세요">
                                         </div>
                                         
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
-                                            </div>
-                                        </div>
-                                        
                                         <button type="button" class="btn btn-primary btn-user btn-block" id="loginBtn">
                                             Login
                                         </button>
                                         
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">비밀번호 찾기</a>
-                                    </div>
                                     <div class="text-center">
                                         <a class="small" href="/signup">회원가입</a>
                                     </div>

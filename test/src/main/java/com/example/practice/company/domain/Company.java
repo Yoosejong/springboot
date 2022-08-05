@@ -2,10 +2,13 @@ package com.example.practice.company.domain;
 
 import java.sql.Date;
 
-public class Company {
+import com.example.practice.review.domain.Review;
+
+public class Company extends Review{
 	
 	private int cm_no;
 	private String cm_name;
+	private String cm_title;
 	private String cm_content;
 	private String cm_percent;
 	private Date cm_deadline;
@@ -15,16 +18,19 @@ public class Company {
 	private String cm_salary;
 	private String cm_skill;
 	private String cm_imageLink;
+	private String cm_detailLink;
 	
 	public Company() {
 		
 	}
-	
-	public Company(int cm_no, String cm_name, String cm_content, String cm_percent, Date cm_deadline, String cm_job, String cm_career,
-			String cm_careerType, String cm_salary, String cm_skill, String cm_imageLink) {
+
+	public Company(int cm_no, String cm_name, String cm_title, String cm_content, String cm_percent, Date cm_deadline,
+			String cm_job, String cm_career, String cm_careerType, String cm_salary, String cm_skill,
+			String cm_imageLink, String cm_detailLink, Review review) {
 		super();
 		this.cm_no = cm_no;
 		this.cm_name = cm_name;
+		this.cm_title = cm_title;
 		this.cm_content = cm_content;
 		this.cm_percent = cm_percent;
 		this.cm_deadline = cm_deadline;
@@ -34,6 +40,7 @@ public class Company {
 		this.cm_salary = cm_salary;
 		this.cm_skill = cm_skill;
 		this.cm_imageLink = cm_imageLink;
+		this.cm_detailLink = cm_detailLink;
 	}
 
 	public int getCm_no() {
@@ -50,6 +57,14 @@ public class Company {
 
 	public void setCm_name(String cm_name) {
 		this.cm_name = cm_name;
+	}
+
+	public String getCm_title() {
+		return cm_title;
+	}
+
+	public void setCm_title(String cm_title) {
+		this.cm_title = cm_title;
 	}
 
 	public String getCm_content() {
@@ -124,11 +139,21 @@ public class Company {
 		this.cm_imageLink = cm_imageLink;
 	}
 
+	public String getCm_detailLink() {
+		return cm_detailLink;
+	}
+
+	public void setCm_detailLink(String cm_detailLink) {
+		this.cm_detailLink = cm_detailLink;
+	}
+
 	@Override
 	public String toString() {
-		return "Company [cm_no=" + cm_no + ", cm_name=" + cm_name + ", cm_content=" + cm_content + ", cm_percent="
-				+ cm_percent + ", cm_deadline=" + cm_deadline + ", cm_job=" + cm_job + ", cm_career=" + cm_career
-				+ ", cm_careerType=" + cm_careerType + ", cm_salary=" + cm_salary + ", cm_skill=" + cm_skill
-				+ ", cm_imageLink=" + cm_imageLink + "]";
+		return "Company [cm_no=" + cm_no + ", cm_name=" + cm_name + ", cm_title=" + cm_title + ", cm_content="
+				+ cm_content + ", cm_percent=" + cm_percent + ", cm_deadline=" + cm_deadline + ", cm_job=" + cm_job
+				+ ", cm_career=" + cm_career + ", cm_careerType=" + cm_careerType + ", cm_salary=" + cm_salary
+				+ ", cm_skill=" + cm_skill + ", cm_imageLink=" + cm_imageLink + ", cm_detailLink=" + cm_detailLink
+				+ "]";
 	}
+
 }

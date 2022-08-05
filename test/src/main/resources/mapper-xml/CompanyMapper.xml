@@ -13,22 +13,54 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  	<result property="cm_salary" column="cm_salary"/>
 	  	<result property="cm_skill" column="cm_skill"/>
 	  	<result property="cm_imageLink" column="cm_imageLink"/>
+	  	<result property="cm_detailLink" column="cm_detailLink"/>
+  	</resultMap>
+  	
+  	<!-- Review Table ResultMap-->
+  	<resultMap type="com.example.practice.review.domain.Review" id="reviewSetTest">
+  		<id property="rv_no" column="rv_no"/>
+  		<result property="rv_id" column="rv_id"/>
+  		<result property="rv_nickName" column="rv_nickName"/>
+  		<result property="rv_content" column="rv_content"/>
+  		<result property="rv_score" column="rv_score"/>
+  		<result property="rv_writeDate" column="rv_writeDate"/>
+  		<result property="rv_updateDate" column="rv_updateDate"/>
   	</resultMap>
   	
   	<select id="selectCompanyList" resultMap="companyResultSet">
-  		SELECT  cm_no
-  				, cm_name
-  				, cm_content
-  				, cm_percent
-  				, cm_deadline
-  				, cm_job
-  				, cm_career
-  				, cm_careerType
-  				, cm_salary
-  				, cm_skill
-  				, cm_imageLink
+  		SELECT 	tc.cm_no
+						, tr.rv_no
+						, tc.cm_name
+						, tc.cm_title
+						, tc.cm_imageLink
+						, tc.cm_detailLink
+						, tc.cm_percent
+						, tr.rv_content
+			FROM tb_company tc, tb_review tr
+			WHERE tc.cm_no = tr.rv_no
+  	</select>
+  	
+  	<select id="selectOne" parameterType="_int" resultMap="companyResultSet, reviewSetTest">
+  		SELECT 
+  		 tc.cm_no
+  				, tc.cm_name
+  				, tc.cm_title
+  				, tc.cm_content
+  				, tr.rv_content
+  				, tc.cm_percent
+  				, tc.cm_deadline
+  				, tc.cm_job
+  				, tc.cm_career
+  				, tc.cm_careerType
+  				, tc.cm_salary
+  				, tc.cm_skill
+  				, tc.cm_imageLink
+				, tc.cm_detailLink
   		FROM	
-  			tb_company
+  			tb_company tc, tb_review tr
+  				where tc.cm_no = tr.rv_no
+  				AND tc.cm_no = #{tc.cm_no}
+				AND tr.rv_no = #{tr.rv_no}
   	</select>
   	
   	

@@ -17,4 +17,8 @@ public class CompanyService {
 		return (ArrayList)companyMapper.selectCompanyList();
 	}
 
+	public Company selectCompanyOne(int cm_no) {
+		return companyMapper.selectOne(cm_no);
+	}
+
 }

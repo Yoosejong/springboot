@@ -34,10 +34,10 @@ public class LoginController {
     			model.addAttribute("userInfo", user);
     			session.setAttribute("userInfo", user);
     		}else {
-    			throw new lwException("로그인 실패!");
+    			return "common/errorPage";
     		}
     	}else {
-    		throw new lwException("로그인 실패!");
+    		return "common/errorPage";
     	}
     	
     	

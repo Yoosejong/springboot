@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.practice.company.domain.Company;
 import com.example.practice.company.service.CompanyService;
 import com.example.practice.login.domain.Login;
+import com.example.practice.review.domain.Review;
+import com.example.practice.review.service.ReviewService;
 
 @Controller
 public class HomeController {
@@ -20,7 +22,7 @@ public class HomeController {
 	private CompanyService companyService;
 	
 	@RequestMapping("/home")
-	public String index(Model model, Company company, HttpSession session) {
+	public String index(Model model, Company company, Review review, HttpSession session) {
 		
 		ArrayList<Company> list = companyService.selectCompanyList();
 		
@@ -28,7 +30,6 @@ public class HomeController {
 		
 		if(list != null && list.size() > 0) {
 			model.addAttribute("cList", list);
-			System.out.println("타는건가??" + list);
 		}
 		
 		if(login != null) {

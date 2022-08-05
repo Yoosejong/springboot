@@ -11,4 +11,6 @@ public interface CompanyMapper {
 
 	ArrayList<Company> selectCompanyList();
 
+	Company selectOne(int cm_no);
+
 }

@@ -53,43 +53,6 @@ function jsSignUpValidate() {
 	}
 }
 
-function jsPwdChk() {
-	
-	var form = $("form[name=sendform]");
-	
-	var String = $("form[name=sendform]").serialize();
-	
-	var pwd = $("input[name=user_pwd]").val();
-	var pwdChk = $("input[name=user_pwd2]").val();
-	
-	/* if(pwd == pwdChk) {
-		$.ajax({
-			url: '/signUpOk',
-			data: String,
-			type: 'post',
-			dataType: 'json',
-			success: function(ajaxResult) {
-				var flag = ajaxResult.flag;
-				console.log("flag", flag);
-				if(flag == 1 ) {
-					//성공
-					alert("회원가입에 성공했습니다.");
-					/* location.href = "/login" */
-					/* document.sendform.submit(); */
-			/* 	} else {
-					//실패
-					alert("회원가입에 실패하였습니다.");
-					return false;
-				}
-			}
-		
-		});
-	} else {
-		alert("비밀번호를 다시 확인해주세요.");
-		return false;
-	} */
-}
-
 </script>
 </head>
 <body class="bg-gradient-primary">
@@ -111,7 +74,6 @@ function jsPwdChk() {
                                     <div class="col-sm-10 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="user_id" name="user_id" placeholder="아이디"/>
                                     </div>
-                                    <button type="button" class="btn btn-primary btn-user btn-block" style="width:90px;">중복체크</button>
                                 </div>
                                 
                                 <div class="form-group">
@@ -130,27 +92,12 @@ function jsPwdChk() {
                                         <input type="text" class="form-control form-control-user" id="user_phone" name="user_phone" placeholder="연락처">
                                     </div>
                                 </div>
-                                <!-- <a href="#" onClick="javascript:jsSignUpValidate();" class="btn btn-primary btn-user btn-block">
-                                    회원가입
-                                </a> -->
                                 
                                 <input type="button" class="btn btn-primary btn-user btn-block" onclick="javascript:jsSignUpValidate();" value="회원가입"/>
                                 
                                 <hr>
-                             <!--    <a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a> -->
                             </form>
                             <hr>
-                            <!-- <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
-                            </div> -->
                         </div>
                     </div>
                 </div>
